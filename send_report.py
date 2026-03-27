@@ -33,7 +33,14 @@ res = requests.post(
     }
 )
 
-message = res.json()["choices"][0]["message"]["content"]
+data = res.json()
+
+print(data)
+
+if "choices" in data:
+    message = data["choices"][0]["message"]["content"]
+else:
+    message = "❌ فيه مشكلة في API: " + str(data)
 
 url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
 
