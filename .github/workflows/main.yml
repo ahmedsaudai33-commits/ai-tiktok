@@ -21,5 +21,8 @@ jobs:
       - name: Install requests
         run: pip install requests
 
-      - name: Run bot
-        run: python send_report.py
+     - name: Run bot
+  env:
+    BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+    CHAT_ID: ${{ secrets.CHAT_ID }}
+  run: python send_report.py
